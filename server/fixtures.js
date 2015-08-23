@@ -14,9 +14,11 @@ if (Posts.find().count() === 0) {
 
   var telescopeId = Posts.insert({
     title: 'Introducing Telescope',
+	slug: 'introduce-telescope',
     userId: sacha._id,
     author: sacha.profile.name,
     url: 'http://sachagreif.com/introducing-telescope/',
+	sport: 'Triathlon',
     submitted: new Date(now - 7 * 3600 * 1000),
     commentsCount: 2,
     upvoters: [], 
@@ -41,9 +43,11 @@ if (Posts.find().count() === 0) {
 
   Posts.insert({
     title: 'Meteor',
+	slug: 'meteor',
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://meteor.com',
+	sport: 'Triathlon',
     submitted: new Date(now - 10 * 3600 * 1000),
     commentsCount: 0,
     upvoters: [], 
@@ -52,25 +56,28 @@ if (Posts.find().count() === 0) {
 
   Posts.insert({
     title: 'The Meteor Book',
+	slug: 'the-meteor-book',
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://themeteorbook.com',
+	sport: 'Running',
     submitted: new Date(now - 12 * 3600 * 1000),
     commentsCount: 0,
     upvoters: [], 
     votes: 0
   });
 
-  for (var i = 0; i < 10; i++) {
+/*  for (var i = 0; i < 10; i++) {
     Posts.insert({
       title: 'Test post #' + i,
       author: sacha.profile.name,
       userId: sacha._id,
       url: 'http://google.com/?q=test-' + i,
+		sport: 'running',
       submitted: new Date(now - i * 3600 * 1000 + 1),
       commentsCount: 0,
       upvoters: [], 
       votes: 0
     });
-  }
+  } */
 }

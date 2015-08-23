@@ -1,3 +1,9 @@
+Template.postEdit.helpers({
+	preSelectSport: function(option, sport) {
+		return option == sport ? 'selected' : '';
+	}
+});
+
 Template.postEdit.onCreated(function() {
 	Session.set('postEditErrors',  {});
 });
@@ -17,11 +23,12 @@ Template.postEdit.events({
 		var currentPostId = this._id;
 		var postProperties = {
 			url: $(e.target).find('[name=url]').val(),
-			title: $(e.target).find('[name=title]').val()
+			title: $(e.target).find('[name=title]').val(),
+			sport: $(e.target).find('[name=sport]').val(),
 		}
 		
 		var errors = validatePost(postProperties);
-		if (errors.title || errors.url)
+		if (errors.title || errors.url || errors.sport)
 			return Session.set('postEditErrors', errors);
 		
 		Posts.update(currentPostId, {$set: postProperties}, function(error) {
