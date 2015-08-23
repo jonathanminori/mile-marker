@@ -4,7 +4,8 @@ Template.postSubmit.events({
 
 		var post = {
 			url: $(e.target).find('[name=url]').val(),
-			title: $(e.target).find('[name=title]').val()
+			title: $(e.target).find('[name=title]').val(),
+			sport: $(e.target).find('[name=sport]').val()
 		};
 		
 		var errors = validatePost(post);
@@ -15,12 +16,17 @@ Template.postSubmit.events({
 			// display the error to the user and abort
 			if (error) {
 				return throwError(error.reason);
-				//Router.go('postsPage', {_id: result._id});
+				Router.go('postsPage', {_id: result._id});
 			}
 			
 			// show this result but route anyway
-			if (result.postExists) {
+			if (result.postURLExists) {
 				throwError('This link has already been posted');
+			}
+			
+			// show this result but route anyway
+			if (result.postTitleExists) {
+				throwError('This title has already been posted');
 			}
 		});
 		
